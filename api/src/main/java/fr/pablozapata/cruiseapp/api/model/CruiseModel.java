@@ -1,28 +1,33 @@
 package fr.pablozapata.cruiseapp.api.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class CruiseModel {
-    private @Id
+public class CruiseModel implements Serializable {
+    @Column
+    @Id
     @GeneratedValue
-    Long id;
+    private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String description;
-    private String imageURL;
 
-    public CruiseModel(String name, String description, String imageURL) {
-        this.name = name;
-        this.description = description;
-        this.imageURL = imageURL;
-    }
-
-    public CruiseModel() {
-
-    }
+    @Column
+    private String imageUrl;
 }
