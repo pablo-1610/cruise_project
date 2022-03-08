@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CruiseApp</string>
+    <string name="title_activity_login">Veuillez vous connecter ou vous enregister !</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mots de passe</string>
+    <string name="action_sign_in">Connection</string>
+    <string name="s_enregistrer">s\'enregistrer</string>
+    <string name="todo">TODO</string>
+    <!-- Page Register -->
+    <string name="btn_to_register_str">Se connecter</string>
+    <string name="register_email">Votre email</string>
+    <string name="register_prenom">Votre prenom</string>
+    <string name="register_nom">Votre nom</string>
+    <string name="register_numero">Votre numero</string>
+    <string name="register_password">Votre mots de passe</string>
+</resources>
