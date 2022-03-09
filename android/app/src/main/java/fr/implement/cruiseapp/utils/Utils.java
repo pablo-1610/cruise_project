@@ -1,10 +1,7 @@
-package fr.implement.cruiseapp;
+package fr.implement.cruiseapp.utils;
 
 import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,18 +11,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author: Implements
+ * @since: 08/03/2022
+ */
+
 public class Utils {
 
-    private Gson gson = new Gson();
+    private static Gson gson = new Gson();
 
-    private final int CODE_ERROR = 404;
-    private final String URL = "localhost";
+    private static final int CODE_ERROR = 404;
+    private static final String URL = "localhost";
 
     private Utils(){
         throw new IllegalStateException("Utility class");
     }
 
-    public boolean hasAccount(String email, String password){
+    public static boolean hasAccount(String email, String password){
         HttpURLConnection urlConnection = null;
 
         String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
@@ -46,7 +48,7 @@ public class Utils {
         return false;
     }
 
-    public Profile getProfileUser(String email, String password){
+    public static Profile getProfileUser(String email, String password){
         HttpURLConnection urlConnection = null;
 
         String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
@@ -68,7 +70,7 @@ public class Utils {
         return null;
     }
 
-    private String readStream(InputStream in) throws IOException {
+    private static String readStream(InputStream in) throws IOException {
         StringBuilder sb = new StringBuilder();
         BufferedReader r = new BufferedReader(new InputStreamReader(in), 1000);
         for(String line = r.readLine(); line != null; line = r.readLine()) sb.append(line);

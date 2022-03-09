@@ -7,7 +7,7 @@
     android:background="@color/logo_background"
     android:backgroundTint="@color/logo_background"
 
-    tools:context=".activity.LaunchActivity">
+    tools:context=".LaunchActivity">
 
 
     <ProgressBar

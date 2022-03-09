@@ -1,4 +1,4 @@
-package fr.implement.cruiseapp.activity;
+package fr.implement.cruiseapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,12 @@ import android.view.WindowManager;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import fr.implement.cruiseapp.R;
+import fr.implement.cruiseapp.activity.ActivityLogin;
+
+/**
+ * @author: Implements
+ * @since: 08/03/2022
+ */
 
 public class LaunchActivity extends AppCompatActivity {
 

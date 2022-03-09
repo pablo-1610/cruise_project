@@ -2,11 +2,16 @@ package fr.implement.cruiseapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 import fr.implement.cruiseapp.R;
-import fr.implement.cruiseapp.listeners.activityregister.RegisterListener;
+
+/**
+ * @author: Implements
+ * @since: 08/03/2022
+ */
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -18,7 +23,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Button register
-        findViewById(R.id.register_btn_register).setOnClickListener(new RegisterListener());
+        findViewById(R.id.register_btn_to_connection).setOnClickListener((view -> {
+            finishActivity(1);
+            startActivity(new Intent(RegisterActivity.this, ActivityLogin.class));
+        }));
         // Button se connecter
         //findViewById(R.id.register_btn_to_connection).setOnClickListener(new RegisterListener());
     }

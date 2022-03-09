@@ -1,4 +1,9 @@
-package fr.implement.cruiseapp;
+package fr.implement.cruiseapp.utils;
+
+/**
+ * @author: Implements
+ * @since: 08/03/2022
+ */
 
 public class Profile {
 

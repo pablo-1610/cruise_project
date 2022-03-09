@@ -6,6 +6,10 @@
     <string name="action_sign_in">Connection</string>
     <string name="s_enregistrer">s\'enregistrer</string>
     <string name="todo">TODO</string>
+
+    <!-- Page Login -->
+    <string name="login_status" />
+
     <!-- Page Register -->
     <string name="btn_to_register_str">Se connecter</string>
     <string name="register_email">Votre email</string>
