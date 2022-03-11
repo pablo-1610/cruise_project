@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,8 +13,8 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
-public class UserModel implements Serializable {
+@Table
+public class User implements Serializable {
     @Id
     @Column
     @GeneratedValue
@@ -37,7 +36,7 @@ public class UserModel implements Serializable {
     private String lastName;
 
     @Column
-    private Boolean isCruiseOwner = false;
+    private Integer permission = 0;
 
     @Column
     private String authToken;
