@@ -1,5 +1,6 @@
-package fr.cruiseapp.api.model;
+package fr.cruiseapp.api.model.entities;
 
+import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
 import fr.cruiseapp.api.type.CruiseDescription;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,12 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
-public class Cruise implements Serializable {
-    @Id
-    @Column
-    @GeneratedValue
-    private Long id;
-
+public class Cruise extends AbstractEntity implements Serializable {
     @Column
     private Long ownerId;
 

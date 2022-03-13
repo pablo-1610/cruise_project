@@ -1,7 +1,7 @@
 package fr.cruiseapp.api.controller;
 
-import fr.cruiseapp.api.model.User;
-import fr.cruiseapp.api.repository.UserRepository;
+import fr.cruiseapp.api.model.entities.User;
+import fr.cruiseapp.api.model.repositories.UserRepository;
 import fr.cruiseapp.api.security.AuthTokenManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

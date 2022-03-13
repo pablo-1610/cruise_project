@@ -1,4 +1,4 @@
-package fr.cruiseapp.api.model;
+package fr.cruiseapp.api.model.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

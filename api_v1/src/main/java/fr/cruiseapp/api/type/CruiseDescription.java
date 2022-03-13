@@ -1,6 +1,6 @@
 package fr.cruiseapp.api.type;
 
-import fr.cruiseapp.api.model.Destination;
+import fr.cruiseapp.api.model.entities.Destination;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
