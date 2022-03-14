@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
+    public ResponseEntity<User> getUser(@PathVariable String id) {
         final var user = userRepository.findById(id).orElse(null);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -41,9 +42,6 @@ public class UserController {
         User user = newUser;
         if (userRepository.findAll().stream().filter(u -> u.getEmail().equals(user.getEmail())).findFirst().orElse(null) != null) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists");
-        }
-        if (newUser.getAuthToken() == null) {
-            user.setAuthToken(AuthTokenManager.getInstance().generateToken());
         }
         userRepository.save(user);
         if (user == null) {

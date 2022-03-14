@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 public class AbstractEntity {
     @Id
-    @GeneratedValue(generator = "uuidv4")
-    @GenericGenerator(name = "uuidv4", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String id = UUID.randomUUID().toString();
 }

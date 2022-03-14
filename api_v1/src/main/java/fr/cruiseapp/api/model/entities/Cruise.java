@@ -1,7 +1,6 @@
 package fr.cruiseapp.api.model.entities;
 
 import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
-import fr.cruiseapp.api.type.CruiseDescription;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,7 @@ import java.util.List;
 @Table
 public class Cruise extends AbstractEntity implements Serializable {
     @Column
-    private Long ownerId;
+    private String ownerId;
 
     @Column
     private String label;
@@ -27,7 +26,7 @@ public class Cruise extends AbstractEntity implements Serializable {
     @Column
     private Integer price;
 
-    @Column
+    @ManyToOne(cascade = CascadeType.ALL)
     private CruiseDescription description;
 
     @OneToMany

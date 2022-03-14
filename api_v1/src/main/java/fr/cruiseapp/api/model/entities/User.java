@@ -1,10 +1,7 @@
 package fr.cruiseapp.api.model.entities;
 
 import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,5 +33,13 @@ public class User extends AbstractEntity implements Serializable {
     private Integer permission = 0;
 
     @Column
-    private String authToken;
+    private String authToken = UUID.randomUUID().toString();
+
+    public User(String username, String email, String password, String firstName, String lastName) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
