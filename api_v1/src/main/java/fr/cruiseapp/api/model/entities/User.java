@@ -42,4 +42,22 @@ public class User extends UUIDEntity implements Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    @Getter
+    @Setter
+    public static class SecuredUser {
+        private String username;
+        private String email;
+        private String firstName;
+        private String lastName;
+        private Integer permission;
+
+        public SecuredUser(User user) {
+            this.username = user.getUsername();
+            this.email = user.getEmail();
+            this.firstName = user.getFirstName();
+            this.lastName = user.getLastName();
+            this.permission = user.getPermission();
+        }
+    }
 }

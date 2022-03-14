@@ -10,8 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class UserController {
@@ -32,9 +31,13 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<User> getAllUsers() {
+    public List<User.SecuredUser> getAllUsers() {
         System.out.println("Users get");
-        return userRepository.findAll();
+        List<User.SecuredUser> users = new ArrayList<>();
+        userRepository.findAll().forEach(user -> {
+            users.add(new User.SecuredUser(user));
+        });
+        return users;
     }
 
     @PostMapping(path = "/users",
