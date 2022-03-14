@@ -28,18 +28,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         user.setAuthToken(null);
-        return ResponseEntity.status(HttpStatus.OK).body(user.getForRequest());
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
         System.out.println("Users get");
-        // Return all users with getForRequest()
-        final val users = userRepository.findAll();
-        for (User user : users) {
-            user = user.getForRequest();
-        }
-        return users;
+        return userRepository.findAll();
     }
 
     @PostMapping(path = "/users",

@@ -42,15 +42,4 @@ public class User extends UUIDEntity implements Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    public User getForRequest() {;
-        try {
-            final User user = (User) this.clone();
-            user.setAuthToken("hidden");
-            return user;
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
