@@ -22,6 +22,7 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
+        System.out.println("Users get");
         return userRepository.findAll();
     }
 
