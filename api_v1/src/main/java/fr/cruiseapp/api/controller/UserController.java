@@ -20,12 +20,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
-        System.out.println("Users get");
-        return userRepository.findAll();
-    }
-
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUser(@PathVariable String id) {
         final var user = userRepository.findById(id).orElse(null);
@@ -33,7 +27,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         user.setAuthToken(null);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+        return ResponseEntity.status(HttpStatus.OK).body(user.getForRequest());
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        System.out.println("Users get");
+        // Return all users with getForRequest()
+        return userRepository.findAll().stream().map(User::getForRequest).collect(java.util.stream.Collectors.toList());
     }
 
     @PostMapping(path = "/users",
