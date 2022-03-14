@@ -44,7 +44,7 @@ public class User extends UUIDEntity implements Serializable {
     }
 
     public User getForRequest() {
-        final val user = new User(this.username, this.email, this.password, this.firstName, this.lastName);
+        final val user = this;
         user.setAuthToken("hidden");
         return user;
     }
