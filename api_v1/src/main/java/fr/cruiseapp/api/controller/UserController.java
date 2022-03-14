@@ -3,6 +3,7 @@ package fr.cruiseapp.api.controller;
 import fr.cruiseapp.api.model.entities.User;
 import fr.cruiseapp.api.model.repositories.UserRepository;
 import fr.cruiseapp.api.security.AuthTokenManager;
+import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,11 @@ public class UserController {
     public List<User> getAllUsers() {
         System.out.println("Users get");
         // Return all users with getForRequest()
-        return userRepository.findAll().stream().map(User::getForRequest).collect(java.util.stream.Collectors.toList());
+        final val users = userRepository.findAll();
+        users.forEach(u -> {
+            u = u.getForRequest();
+        });
+        return users;
     }
 
     @PostMapping(path = "/users",
