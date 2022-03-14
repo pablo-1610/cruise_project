@@ -1,6 +1,6 @@
 package fr.cruiseapp.api.model.entities;
 
-import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
+import fr.cruiseapp.api.model.entities.commons.UUIDEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,17 +16,17 @@ import java.util.Date;
 @Getter
 @Setter
 @Table
-public class CruiseDescription extends AbstractEntity implements Serializable {
-    @Column(name = "cruise_from")
-    private String from;
+public class CruiseDescription extends UUIDEntity implements Serializable {
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Location cruise_from;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Location cruise_to;
     @Column
-    private String ship;
-    @ManyToOne
-    private Destination destination;
-    @Column
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date departure;
+    private String cruise_ship;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
-    private Date arrival;
+    private Date cruise_departure;
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date cruise_arrival;
 }

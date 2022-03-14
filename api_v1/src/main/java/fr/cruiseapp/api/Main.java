@@ -2,7 +2,7 @@ package fr.cruiseapp.api;
 
 import fr.cruiseapp.api.model.entities.Cruise;
 import fr.cruiseapp.api.model.entities.CruiseDescription;
-import fr.cruiseapp.api.model.entities.Destination;
+import fr.cruiseapp.api.model.entities.Location;
 import fr.cruiseapp.api.model.entities.User;
 import fr.cruiseapp.api.model.repositories.CruiseRepository;
 import fr.cruiseapp.api.model.repositories.DestinationRepository;
@@ -17,7 +17,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Collections;
 import java.util.Date;
-import java.util.UUID;
 
 @SpringBootApplication
 @EntityScan("fr.cruiseapp.api.model.entities")
@@ -33,10 +32,10 @@ public class Main {
             final val user = new User("pablo_1610", "pablo.zapata.dev@gmail.com", "test", "Pablo", "ZAPATA");
             userRepository.save(user);
 
-            final val destination = new Destination("MAD", "Madrid", "Spain", "Europe");
+            final val destination = new Location("MAD", "Madrid", "Spain", "Europe");
             destinationRepository.save(destination);
 
-            final val cruise = new Cruise(user.getId(), "Le beau tour", 1500, new CruiseDescription("BER", "Cargo", destination, new Date(), new Date()), Collections.emptyList());
+            final val cruise = new Cruise(user.getId(), "Le beau tour", 1500, new CruiseDescription(destination, destination, "Cargo", new Date(), new Date()), Collections.emptyList());
             cruiseRepository.save(cruise);
         };
     }

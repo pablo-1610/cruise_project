@@ -1,6 +1,6 @@
 package fr.cruiseapp.api.model.entities;
 
-import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
+import fr.cruiseapp.api.model.entities.commons.UUIDEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
-public class User extends AbstractEntity implements Serializable {
+public class User extends UUIDEntity implements Serializable {
     @Column
     private String username;
 

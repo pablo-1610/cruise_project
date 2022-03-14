@@ -1,14 +1,11 @@
 package fr.cruiseapp.api.model.entities;
 
-import fr.cruiseapp.api.model.entities.commons.AbstractEntity;
+import fr.cruiseapp.api.model.entities.commons.UUIDEntity;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -16,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
-public class Destination extends AbstractEntity implements Serializable {
+public class Location extends UUIDEntity implements Serializable {
     @Column(length = 3, unique = true)
     private String shortCode;
 
