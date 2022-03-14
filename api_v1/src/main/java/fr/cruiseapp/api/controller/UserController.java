@@ -36,9 +36,9 @@ public class UserController {
         System.out.println("Users get");
         // Return all users with getForRequest()
         final val users = userRepository.findAll();
-        users.forEach(u -> {
-            u = u.getForRequest();
-        });
+        for (User user : users) {
+            user = user.getForRequest();
+        }
         return users;
     }
 
