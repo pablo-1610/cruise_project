@@ -7,9 +7,9 @@ package fr.implement.cruiseapp.utils;
 
 public enum Permissions {
 
-    ADMINISTRATOR(0, "Administrateur"),
-    MODO(1, "Modérateur"),
-    MEMBER(2, "Member")
+    ADMINISTRATOR(100, "Administrateur"),
+    MODO(50, "Modérateur"),
+    MEMBER(0, "Member")
     ;
 
     private int permission;

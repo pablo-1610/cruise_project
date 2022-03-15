@@ -2,6 +2,7 @@ package fr.implement.cruiseapp.utils;
 
 import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,10 +19,10 @@ import java.nio.charset.StandardCharsets;
 
 public class Utils {
 
-    private static Gson gson = new Gson();
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 
     private static final int CODE_ERROR = 404;
-    private static final String URL = "localhost";
+    //private static final String URL = "http://79.137.37.5:9001/users";
 
     private Utils(){
         throw new IllegalStateException("Utility class");
@@ -30,10 +31,10 @@ public class Utils {
     public static boolean hasAccount(String email, String password){
         HttpURLConnection urlConnection = null;
 
-        String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
+        //String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
         try {
-            URL url = new URL(URL);
+            URL url = new URL("URL");
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
@@ -49,23 +50,24 @@ public class Utils {
     }
 
     public static Profile getProfileUser(String email, String password){
-        HttpURLConnection urlConnection = null;
+        System.out.println("send");
 
         String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
         try {
-            URL url = new URL(URL);
+            URL url = new URL("http://79.137.37.5:9001/");
 
-            urlConnection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
 
             InputStream in = urlConnection.getInputStream();
 
-            return gson.fromJson(readStream(in), Profile.class);
+            String strGson = readStream(in);
+            System.out.println(strGson);
+
+            return gson.fromJson(strGson, Profile.class);
         }catch (IOException e){
             e.printStackTrace();
-        }finally {
-            urlConnection.disconnect();
         }
         return null;
     }

@@ -3,19 +3,26 @@ package fr.implement.cruiseapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import fr.implement.cruiseapp.R;
+import fr.implement.cruiseapp.TestActivity;
+import fr.implement.cruiseapp.utils.Profile;
 import fr.implement.cruiseapp.utils.Utils;
 
 /**
- * @author: Implements
- * @since: 08/03/2022
+ * @author Implements
+ * @since 08/03/2022
  */
 
 public class ActivityLogin extends AppCompatActivity {
+
+    private static Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +41,28 @@ public class ActivityLogin extends AppCompatActivity {
             String password = ((TextView) findViewById(R.id.login_password)).getText().toString();
             TextView status = findViewById(R.id.login_status_id);
 
-            if(!email.contains("@") && email.isEmpty()) {
+            if(!email.contains("@")) {
                 status.setText("Erreur dans l'email.");
+                status.setTextColor(Color.RED);
             }else{
-                // requests de connexion
-                //Utils.getProfileUser(email, password);
+                Intent i = new Intent(ActivityLogin.this, TestActivity.class);
+                startActivity(i);
+                finish();
+                profile = Utils.getProfileUser("pablo.zapata.dev@gmail.com", "test");
             }
+
+
 
             //System.out.println("Email : " + email.getText() + " | password : " + password.getText());
         });
     }
+
+
+    public static Profile getProfile() {
+        return profile;
+    }
+
+
 
 
 }
