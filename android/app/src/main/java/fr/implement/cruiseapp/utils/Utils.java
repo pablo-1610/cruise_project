@@ -54,21 +54,7 @@ public class Utils {
 
         String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
-        try {
-            URL url = new URL("http://79.137.37.5:9001/");
-
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.connect();
-
-            InputStream in = urlConnection.getInputStream();
-
-            String strGson = readStream(in);
-            System.out.println(strGson);
-
-            return gson.fromJson(strGson, Profile.class);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        
         return null;
     }
 
