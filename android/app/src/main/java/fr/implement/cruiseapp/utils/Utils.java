@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -49,12 +51,33 @@ public class Utils {
         return false;
     }
 
-    public static Profile getProfileUser(String email, String password){
+    public static Profile login(String email, String password){
         System.out.println("send");
 
         String passwordHash = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
 
-        
+        HttpURLConnection urlConnection;
+
+        try {
+            URL url = new URL("http://79.137.37.5:9001/users");
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.connect();
+
+            OutputStream os = urlConnection.getOutputStream();
+            OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
+            osw.write(email + "|" + passwordHash);
+
+            System.out.println("Response code : " + urlConnection.getResponseCode());
+            System.out.println("Response Message : " + urlConnection.getResponseMessage());
+
+            osw.flush();
+            osw.close();
+            urlConnection.disconnect();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -65,5 +88,8 @@ public class Utils {
         in.close();
         return sb.toString();
     }
+
+
+
 
 }

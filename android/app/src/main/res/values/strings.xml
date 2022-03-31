@@ -17,4 +17,6 @@
     <string name="register_nom">Votre nom</string>
     <string name="register_numero">Votre numero</string>
     <string name="register_password">Votre mots de passe</string>
+
+    <!-- Main Activity -->
 </resources>

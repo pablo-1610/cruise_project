@@ -48,7 +48,7 @@ public class ActivityLogin extends AppCompatActivity {
                 Intent i = new Intent(ActivityLogin.this, TestActivity.class);
                 startActivity(i);
                 finish();
-                profile = Utils.getProfileUser("pablo.zapata.dev@gmail.com", "test");
+                //profile = Utils.getProfileUser("pablo.zapata.dev@gmail.com", "test");
             }
 
 
@@ -61,6 +61,8 @@ public class ActivityLogin extends AppCompatActivity {
     public static Profile getProfile() {
         return profile;
     }
+
+    
 
 
 
